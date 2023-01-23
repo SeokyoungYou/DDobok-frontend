@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# DDobok
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+주짓수 도복 큐레이팅을 위한 웹사이트인 DDobok(또복)의 프론트엔드 코드 저장소입니다.
 
-## Available Scripts
+- 백엔드 코드 저장소: https://github.com/eakyoungyu/DDobok-backend
 
-In the project directory, you can run:
+## 프로젝트 살펴보기
 
-### `npm start`
+### 1. 실행 방법
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+npm install
+npm start
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 2. 배포 링크 및 최종 구현 데모
 
-### `npm test`
+[배포 웹사이트 링크](https://seokyoungyou.github.io/DDobok-frontend/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. 프로젝트 구조 및 사용 라이브러리/패키지
 
-### `npm run build`
+[프로젝트 구조](https://github.com/SeokyoungYou/DDobok-frontend/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B5%AC%EC%A1%B0)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<div style="float: left;">
+  <img src="https://img.shields.io/badge/React-3776AB?style=for-the-badge&logo=React&logoColor=white">
+  <img src="https://img.shields.io/badge/TypeScript-3776AB?style=for-the-badge&logo=TypeScript&logoColor=white">
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 구현 기능 목록
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[구현 기능 목록](https://github.com/SeokyoungYou/DDobok-frontend/wiki/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94#%EA%B5%AC%ED%98%84-%EA%B8%B0%EB%8A%A5-%EB%AA%A9%EB%A1%9D)
 
-### `npm run eject`
+## 프로젝트 주안점
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. [Git/GitHub 활용을 위한 브랜치 전략 및 커밋 컨벤션](https://github.com/SeokyoungYou/DDobok-frontend/wiki/Git-%ED%99%9C%EC%9A%A9-%EB%B0%A9%EB%B2%95)을 세웠습니다.
+2. [CI/CD](https://github.com/SeokyoungYou/DDobok-frontend/wiki/CI-CD-%EC%A0%81%EC%9A%A9)를 통해 코드 안전성을 높이고 및 자동 배포로 개발에 집중하는 환경을 만들었습니다.
+3. TypeScript를 활용
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 개선 필요 사항
