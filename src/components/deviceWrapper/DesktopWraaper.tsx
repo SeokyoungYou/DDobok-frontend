@@ -8,7 +8,7 @@ interface DesktopWrapperProps {
 const DesktopWrapper: React.FC<DesktopWrapperProps> = ({ children }) => {
   return (
     <Background>
-      <MobileWrapper>{children}</MobileWrapper>
+      <VerticalVeiwWrapper>{children}</VerticalVeiwWrapper>
     </Background>
   );
 };
@@ -20,11 +20,11 @@ const Background = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  background-color: ${(props) => props.theme.bgDarkColor};
+  background-color: ${(props) => props.theme.bgLight};
 `;
 
-const MobileWrapper = styled.div`
-  width: 400px;
+const VerticalVeiwWrapper = styled.div`
+  width: 500px;
   height: 100vh;
-  background-color: ${(props) => props.theme.bgLightColor};
+  background-color: ${(props) => props.theme.bgLight};
 `;
