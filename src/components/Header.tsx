@@ -22,6 +22,7 @@ const TitleWrapper = styled.div`
   padding: 10px;
 `;
 const Title = styled.h1`
+  color: ${(props) => props.theme.bgLight};
   font-size: 32px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -29,8 +30,9 @@ const Title = styled.h1`
 const DescriptionWrapper = styled.div`
   font-size: 16px;
   font-weight: 500;
+  color: ${(props) => props.theme.bgLight};
 `;
 const DescriptionTitle = styled.span``;
 const Description = styled.span`
-  color: ${(props) => props.theme.textLight};
+  font-weight: 300;
 `;
