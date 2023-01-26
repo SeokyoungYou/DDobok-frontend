@@ -1,5 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Gi, Gis } from "../../type/types";
 import GiItem from "./GiItem";
 
 const gis = [
@@ -81,15 +83,34 @@ const gis = [
     brand: 1,
   },
 ];
+
 const GiItems: React.FC = () => {
+  const [gis, setGis] = useState<Gis>([] as Gis);
+  useEffect(() => {
+    loadData();
+  }, []);
+  console.log(gis);
+  const loadData = async () => {
+    const data = await axios
+      .get("https://ddobok.onrender.com/api/v1/gis/")
+      .then((res) => res.data);
+    setGis(data);
+    // console.log(data);
+  };
   return (
     <Wrapper>
-      <Title>상품: {gis.length} 건</Title>
-      <GiItemsWrapper>
-        {gis.map((item) => (
-          <GiItem item={item} key={item.id} />
-        ))}
-      </GiItemsWrapper>
+      {gis.length === 0 ? (
+        <span>no data</span>
+      ) : (
+        <>
+          <Title>상품: {gis.length} 건</Title>
+          <GiItemsWrapper>
+            {gis.map((item) => (
+              <GiItem item={item} key={item.id} />
+            ))}
+          </GiItemsWrapper>
+        </>
+      )}
     </Wrapper>
   );
 };

@@ -8,3 +8,5 @@ export interface Gi {
   color: string;
   brand: number;
 }
+
+export type Gis = Array<Gi>;
