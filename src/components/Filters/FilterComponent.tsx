@@ -24,9 +24,7 @@ const FilterComponent: React.FC<IFilterComponent> = ({
   title,
   filterItems,
 }) => {
-  const [filterInstance, setFilterInstance] = useState(
-    new Filter(filterItems.length)
-  );
+  const [filterInstance] = useState(new Filter(filterItems.length));
 
   const setQueryAtom = useSetRecoilState(queryState[title.ENG]);
   const [selectedFilter, setSelectedFilter] = useState<ISelectedFilter>(
