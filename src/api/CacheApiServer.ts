@@ -6,7 +6,6 @@ export class CacheApiServer {
   private static brandsCacheStorage = CACHE_STORAGE.BRANDS;
 
   static async getGisByQuery(query: string) {
-    // const url = `${BASE_URL}/gis/?color=${color}`;
     const url = `${BASE_URL}/gis/${query}`;
     const cache = await caches.open(this.giCacheStorage);
     const cacheResponse = await caches.match(url);
