@@ -11,10 +11,17 @@ const GiItems: React.FC = () => {
     loadData();
   }, []);
 
+  console.log(gis);
+
   const loadData = async () => {
-    // const result = await CacheApiServer.getGisByQuery(GI_COLORS.BLACK);
-    // setGis(result);
+    const result = await CacheApiServer.getGisByQuery(GI_COLORS.BLACK);
+    setGis(result);
+    // const result = await fetch(
+    //   "https://ddobok.onrender.com/api/v1/gis/?color=Black"
+    // );
+    // setGis(await result.json());
   };
+
   return (
     <Wrapper>
       {gis.length === 0 ? (
@@ -23,8 +30,8 @@ const GiItems: React.FC = () => {
         <>
           <Title>상품: {gis.length} 건</Title>
           <GiItemsWrapper>
-            {gis.map((item) => (
-              <GiItem item={item} key={item.id} />
+            {gis.map((gi) => (
+              <GiItem gi={gi} key={gi.id} />
             ))}
           </GiItemsWrapper>
         </>

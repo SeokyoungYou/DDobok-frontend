@@ -10,3 +10,10 @@ export interface Gi {
 }
 
 export type Gis = Array<Gi>;
+
+export interface Brand {
+  id: number;
+  name: string;
+  link_store: string;
+  link_sns: string;
+}

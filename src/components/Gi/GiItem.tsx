@@ -1,28 +1,46 @@
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Gi } from "../../type/types";
+import { CacheApiServer } from "../../api/CacheApiServer";
+import { Brand, Gi } from "../../type/types";
+
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { numberWithCommas } from "../../utlis/util-fn";
 
 interface IGiItem {
-  item: Gi;
+  gi: Gi;
 }
 
-const GiItem: React.FC<IGiItem> = ({ item }) => {
+const GiItem: React.FC<IGiItem> = ({ gi }) => {
+  const [brand, setBrand] = useState<Brand>({} as Brand);
+
+  useEffect(() => {
+    loadBrand();
+  }, []);
+
+  const loadBrand = async () => {
+    const result = await CacheApiServer.getBrandById(gi.brand);
+    setBrand(result);
+  };
+
   return (
     <Wrapper>
       <BrandInfos>
-        <BrandImg />
-        {/* <BrandImg src={item.photo} alt="brand-logo-image" /> */}
-        <BrandTitle target="_blank" href={item.link_store}>
-          {item.brand}: Hyperfly
-        </BrandTitle>
+        <IconLink target="_blank" href={brand.link_store}>
+          <BrandTitle>{brand.name}</BrandTitle>
+          <FontAwesomeIcon icon={faHome} />
+        </IconLink>
+        <IconLink target="_blank" href={brand.link_sns}>
+          <FontAwesomeIcon icon={faInstagram} />
+        </IconLink>
       </BrandInfos>
       <GiInfos>
-        <GiAnchor target="_blank" href={item.link_store}>
-          <GiImg src={item.photo} alt="gi-image" />
-          {/* <GiImg /> */}
-          <GiTitle>{item.name}</GiTitle>
+        <GiAnchor target="_blank" href={gi.link_store}>
+          <GiImg src={gi.photo} alt="gi-image" />
+          <GiTitle>{gi.name}</GiTitle>
         </GiAnchor>
-        <GiPrice>{item.price} 원</GiPrice>
+        <GiPrice>{numberWithCommas(gi.price)} 원</GiPrice>
       </GiInfos>
     </Wrapper>
   );
@@ -42,32 +60,25 @@ const BrandInfos = styled.div`
   gap: 5px;
   align-items: center;
 `;
-const BrandTitle = styled.a``;
-// const BrandImg = styled.img``;
+const BrandTitle = styled.span`
+  margin-right: 5px;
+  font-weight: 400;
+`;
 const GiImg = styled.img`
   width: 100%;
   height: 200px;
-  /* background-color: ${(props) => props.theme.pointRed}; */
   margin-bottom: 5px;
 `;
-const BrandImg = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  background-color: ${(props) => props.theme.pointBlue};
+const IconLink = styled.a`
+  /* font-size: 18px; */
 `;
-// const GiImg = styled.div`
-//   width: 100%;
-//   height: 200px;
-//   background-color: ${(props) => props.theme.pointRed};
-//   margin-bottom: 5px;
-// `;
+
 const GiInfos = styled.div`
   display: flex;
   flex-direction: column;
 `;
 const GiAnchor = styled.a``;
 const GiTitle = styled.span`
-  font-weight: 400;
+  font-weight: 500;
 `;
 const GiPrice = styled.span``;

@@ -3,4 +3,7 @@ export const GI_COLORS = {
   WHITE: "White",
 };
 
-export const CACHE_NAME = "DDobok-gis";
+export const CACHE_STORAGE = {
+  GIS: "DDobod-gis",
+  BRANDS: "DDobod-brands",
+};
