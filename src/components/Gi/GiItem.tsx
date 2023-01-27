@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { CacheApiServer } from "../../api/CacheApiServer";
 import { Brand, Gi } from "../../type/types";
@@ -15,14 +15,14 @@ interface IGiItem {
 const GiItem: React.FC<IGiItem> = ({ gi }) => {
   const [brand, setBrand] = useState<Brand>({} as Brand);
 
-  useEffect(() => {
-    loadBrand();
-  }, []);
-
-  const loadBrand = async () => {
+  const loadBrand = useCallback(async () => {
     const result = await CacheApiServer.getBrandById(gi.brand);
     setBrand(result);
-  };
+  }, [gi.brand]);
+
+  useEffect(() => {
+    loadBrand();
+  }, [loadBrand]);
 
   return (
     <Wrapper>
@@ -52,33 +52,38 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 320px;
+  height: 350px;
   gap: 5px;
 `;
 const BrandInfos = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
 `;
 const BrandTitle = styled.span`
-  margin-right: 5px;
+  margin-right: 10px;
   font-weight: 400;
 `;
 const GiImg = styled.img`
   width: 100%;
   height: 200px;
   margin-bottom: 5px;
+  object-fit: cover;
 `;
 const IconLink = styled.a`
-  /* font-size: 18px; */
+  font-size: 20px;
 `;
 
 const GiInfos = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
 `;
 const GiAnchor = styled.a``;
 const GiTitle = styled.span`
+  /* font-size: 18px; */
   font-weight: 500;
 `;
-const GiPrice = styled.span``;
+const GiPrice = styled.span`
+  /* font-weight: 500; */
+`;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { CacheApiServer } from "../../api/CacheApiServer";
@@ -10,11 +10,7 @@ const GiItems: React.FC = () => {
   const queries = useRecoilValue(querySelector);
   const [gis, setGis] = useState<Gis>([] as Gis);
 
-  useEffect(() => {
-    loadData();
-  }, [queries]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     let results: Gis = [];
 
     const promises = queries.map(async (query) => {
@@ -25,7 +21,11 @@ const GiItems: React.FC = () => {
     await Promise.all(promises);
 
     setGis(results);
-  };
+  }, [queries]);
+
+  useEffect(() => {
+    loadData();
+  }, [queries, loadData]);
 
   return (
     <>
@@ -55,7 +55,7 @@ const Wrapper = styled.div`
 const GiItemsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 10px;
+  margin-top: 30px;
   padding-bottom: 50px;
 `;
 
