@@ -4,6 +4,7 @@ import Filter from "../components/Filters/Filter";
 import Footer from "../components/Footer";
 import GiItems from "../components/Gi/GiItems";
 import Header from "../components/Header";
+import { GI_COLORS_ARRAY, GI_PRICES_ARRAY } from "../constants/api-constants";
 
 const Home: React.FC = () => {
   return (
@@ -11,8 +12,8 @@ const Home: React.FC = () => {
       <Header />
       <ContentsWrapper>
         <FiltersWrapper>
-          <Filter />
-          <Filter />
+          <Filter title="색상" filterItems={GI_COLORS_ARRAY} />
+          <Filter title="가격" filterItems={GI_PRICES_ARRAY} />
         </FiltersWrapper>
         <GiItems />
       </ContentsWrapper>
@@ -32,5 +33,6 @@ const ContentsWrapper = styled.div`
   padding: 10px;
 `;
 const FiltersWrapper = styled.div`
-  height: 100px;
+  width: 100%;
+  /* height: 100px; */
 `;
