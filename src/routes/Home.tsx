@@ -1,7 +1,5 @@
-import axios from "axios";
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { getGis } from "../api/axios-fn";
 import Filter from "../components/Filters/Filter";
 import Footer from "../components/Footer";
 import GiItems from "../components/Gi/GiItems";
