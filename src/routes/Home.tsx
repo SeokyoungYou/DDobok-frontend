@@ -1,4 +1,5 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import styled from "styled-components";
 import Filters from "../components/Filters/Filters";
 import Footer from "../components/Footer";
@@ -7,14 +8,14 @@ import Header from "../components/Header";
 
 const Home: React.FC = () => {
   return (
-    <>
+    <RecoilRoot>
       <Header />
       <ContentsWrapper>
         <Filters />
         <GiItems />
       </ContentsWrapper>
       <Footer />
-    </>
+    </RecoilRoot>
   );
 };
 

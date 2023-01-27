@@ -1,42 +1,47 @@
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { CacheApiServer } from "../../api/CacheApiServer";
-import { GI_COLORS } from "../../constants/api-constants";
-import { Gi, Gis } from "../../type/types";
+import { querySelector } from "../../store/atom";
+import { Gis } from "../../type/types";
 import GiItem from "./GiItem";
 
 const GiItems: React.FC = () => {
+  const queries = useRecoilValue(querySelector);
   const [gis, setGis] = useState<Gis>([] as Gis);
+
   useEffect(() => {
     loadData();
-  }, []);
-
-  console.log(gis);
+  }, [queries]);
 
   const loadData = async () => {
-    const result = await CacheApiServer.getGisByQuery(GI_COLORS.BLACK);
-    setGis(result);
-    // const result = await fetch(
-    //   "https://ddobok.onrender.com/api/v1/gis/?color=Black"
-    // );
-    // setGis(await result.json());
+    let results: Gis = [];
+
+    const promises = queries.map(async (query) => {
+      const result = await CacheApiServer.getGisByQuery(query);
+      results.push(...result);
+    });
+
+    await Promise.all(promises);
+
+    setGis(results);
   };
 
   return (
-    <Wrapper>
+    <>
       {gis.length === 0 ? (
-        <span>로딩중...</span>
+        <span>결과가 없습니다.</span>
       ) : (
-        <>
+        <Wrapper>
           <Title>상품: {gis.length} 건</Title>
           <GiItemsWrapper>
             {gis.map((gi) => (
               <GiItem gi={gi} key={gi.id} />
             ))}
           </GiItemsWrapper>
-        </>
+        </Wrapper>
       )}
-    </Wrapper>
+    </>
   );
 };
 

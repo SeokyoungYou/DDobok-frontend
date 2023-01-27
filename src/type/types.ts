@@ -17,3 +17,5 @@ export interface Brand {
   link_store: string;
   link_sns: string;
 }
+
+export type IQueries = Array<string>;

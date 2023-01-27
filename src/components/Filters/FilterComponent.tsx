@@ -1,36 +1,53 @@
 import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { Filter, IFilter } from "../../class/Filter";
+import { Filter } from "../../class/Filter";
 import {
   FILTER_BG_COLOR,
   FILTER_TEXT_COLOR,
 } from "../../constants/app-constants";
+import { queryState } from "../../store/atom";
+import { getQueriesByTitle } from "../../utlis/query-fn";
 
 export type ISelectedFilter = string[];
+export type ITitle = {
+  KOR: string;
+  ENG: string;
+};
+
 interface IFilterComponent {
   filterItems: Array<string>;
-  title: string;
+  title: ITitle;
 }
 
 const FilterComponent: React.FC<IFilterComponent> = ({
   title,
   filterItems,
 }) => {
-  const [filterInstance, _] = useState<IFilter>(new Filter(filterItems.length));
+  const [filterInstance, _] = useState(new Filter(filterItems.length));
+
+  const setQueryAtom = useSetRecoilState(queryState[title.ENG]);
   const [selectedFilter, setSelectedFilter] = useState<ISelectedFilter>(
     filterInstance.initialFilter
   );
 
+  const postQueryToAtom = (filter: ISelectedFilter) => {
+    const newQueries = getQueriesByTitle(title.ENG, filter);
+    setQueryAtom(newQueries);
+  };
+
   const onClickItem = (index: number) => {
     setSelectedFilter((prev) => {
       const prevFilter = [...prev];
-      return filterInstance.getNewFilter(prevFilter, index);
+      const newFilter = filterInstance.getNewFilter(prevFilter, index);
+      postQueryToAtom(newFilter);
+      return newFilter;
     });
   };
 
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title>{title.KOR}</Title>
       <Items>
         {filterItems.map((item, index) => {
           return (
