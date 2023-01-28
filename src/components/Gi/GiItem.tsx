@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import { CacheApiServer } from "../../api/CacheApiServer";
 import { Brand, Gi } from "../../type/types";
-
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { numberWithCommas } from "../../utlis/util-fn";
