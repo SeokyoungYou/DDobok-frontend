@@ -26,6 +26,7 @@ const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
   background-color: ${(props) => props.theme.bgLight};
   padding: 10px;
 `;
