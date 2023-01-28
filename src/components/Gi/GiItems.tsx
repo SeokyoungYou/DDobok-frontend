@@ -50,7 +50,6 @@ export default GiItems;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 `;
 const GiItemsWrapper = styled.div`
   display: grid;

@@ -72,14 +72,16 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 20px;
 `;
 
 const Title = styled.div`
-  width: 50px;
+  /* width: 50px; */
 `;
 
 const Items = styled.div`
+  width: 85%;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -91,7 +93,7 @@ interface ItemWrapperProps {
   textColor: string;
 }
 const ItemWrapper = styled.div<ItemWrapperProps>`
-  padding: 0px 15px;
+  padding: 0px 8px;
   height: 28px;
   border-radius: 10px;
   display: flex;
