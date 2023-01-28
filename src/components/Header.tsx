@@ -5,10 +5,7 @@ const Header: React.FC = () => {
   return (
     <TitleWrapper>
       <Title>DDobok</Title>
-      <DescriptionWrapper>
-        <DescriptionTitle>또복. </DescriptionTitle>
-        <Description>당신에게 맞는 도복을 찾아보세요.</Description>
-      </DescriptionWrapper>
+      <DescriptionWrapper></DescriptionWrapper>
     </TitleWrapper>
   );
 };
@@ -31,8 +28,4 @@ const DescriptionWrapper = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.bgLight};
-`;
-const DescriptionTitle = styled.span``;
-const Description = styled.span`
-  font-weight: 300;
 `;

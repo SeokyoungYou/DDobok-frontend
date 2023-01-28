@@ -18,7 +18,7 @@ export default FloatingBtn;
 
 const Wrapper = styled.button`
   position: fixed;
-  bottom: 80px;
+  bottom: 100px;
   border: none;
   width: 50px;
   height: 50px;
