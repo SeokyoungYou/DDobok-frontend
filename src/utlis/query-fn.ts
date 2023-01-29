@@ -20,7 +20,6 @@ export const combineQueries = (
     });
   });
 
-  console.log(result);
   return result;
 };
 
