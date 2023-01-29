@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/DDobok-frontend/static/js/main.662d40db.js",
+    "main.js": "/DDobok-frontend/static/js/main.ffc0ba49.js",
     "index.html": "/DDobok-frontend/index.html",
-    "main.662d40db.js.map": "/DDobok-frontend/static/js/main.662d40db.js.map"
+    "main.ffc0ba49.js.map": "/DDobok-frontend/static/js/main.ffc0ba49.js.map"
   },
   "entrypoints": [
-    "static/js/main.662d40db.js"
+    "static/js/main.ffc0ba49.js"
   ]
 }
